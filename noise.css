@@ -3,7 +3,13 @@ html {
 }
 
 body {
-  background-color: black;   
+  background-color: black;
+}
+
+h1 {
+  color: #999;
+  font-family: verdana, arial, sans-serif;
+  text-align: center;
 }
 
 .instrument {
