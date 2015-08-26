@@ -5,6 +5,7 @@ $(document).ready( function() {
     $(button).click( function (){
       var audio_tag = document.getElementById(sound);
       audio_tag.current_time = 0; // rewind the audio file
+      audio_tag.playbackRate = 3.0; // cuz I'm impatient
       audio_tag.play(); // this plays it exactly once
     });
   }
@@ -30,11 +31,12 @@ var keyboard_map = {
 
   function keySound (keyboard) {
     $( "body" ).keydown(function( event ) {
-      var keycode = event.which;
+      var keycode = event.which; // for clarity
       if (keycode in keyboard) {
         var audio_tag = document.getElementById(keyboard[keycode] + "Audio");
-        audio_tag.current_time = 0; // rewind the audio file
-        audio_tag.play(); // this plays it exactly once
+        audio_tag.current_time = 0;
+        audio_tag.playbackRate = 3.0;
+        audio_tag.play(); 
       }
     });
   }
