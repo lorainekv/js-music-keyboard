@@ -3,10 +3,12 @@ $(document).ready( function() {
 // -- Clicking to make sounds --
   function clickSound(button, sound) {
     $(button).click( function (){
-      var audio_tag = document.getElementById(sound);
-      audio_tag.current_time = 0; // rewind the audio file
-      audio_tag.playbackRate = 3.0; // cuz I'm impatient
-      audio_tag.play(); // this plays it exactly once
+      
+
+      // var audio_tag = document.getElementById(sound);
+      // audio_tag.current_time = 0; // rewind the audio file
+      // audio_tag.playbackRate = 3.0; // cuz I'm impatient
+      // audio_tag.play(); // this plays it exactly once
     });
   }
 
@@ -30,7 +32,7 @@ var keyboard_map = {
     };
 
   function playSound(action, sound) {
-    var audio_tag = document.getElementById(action[sound] + "Audio");
+    var audio_tag = document.getElementById(sound + "Audio");
     audio_tag.current_time = 0;
     audio_tag.playbackRate = 3.0;
     audio_tag.play();
@@ -41,7 +43,7 @@ var keyboard_map = {
       var keycode = event.which; // for clarity
       if (keycode in keyboard_map) {
         $("." + keyboard_map[keycode]).addClass("active");
-        playSound(keyboard_map, keycode);
+        playSound(keyboard_map, keyboard_map[keycode]);
       }
     });
 
