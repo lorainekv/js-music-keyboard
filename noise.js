@@ -18,23 +18,27 @@ $(document).ready( function() {
 
 // -- Keypress to make sounds --
 
-  function keySound () {
-    $( "body" ).keydown(function() {
-    var audio_tag = document.getElementById("aAudio");
-    audio_tag.current_time = 0; // rewind the audio file
-    audio_tag.play(); // this plays it exactly once
+var keyboard_map = {
+    65 : "c",
+    83 : "d",
+    68 : "e",
+    70 : "f",
+    74 : "g",
+    75 : "a",
+    76 : "b"
+    };
+
+  function keySound (keyboard) {
+    $( "body" ).keydown(function( event ) {
+      var keycode = event.which;
+      if (keycode in keyboard) {
+        var audio_tag = document.getElementById(keyboard[keycode] + "Audio");
+        audio_tag.current_time = 0; // rewind the audio file
+        audio_tag.play(); // this plays it exactly once
+      }
     });
   }
 
-  //
-  // function keySound() {
-  //   $('.a').keydown(function() {
-  //     var audio_tag = document.getElementById("aAudio");
-  //     audio_tag.current_time = 0 // rewind the audio file
-  //     audio_tag.play(); // this plays it exactly once
-  //   });
-  // }
-  //
-   keySound();
+  keySound(keyboard_map);
 
 });
