@@ -1,6 +1,6 @@
 $(document).ready( function() {
 
-// -- Clicking to make sounds --
+// Make some noise!
   function playSound(sound) {
     var audio_tag = document.getElementById(sound);
     audio_tag.current_time = 0;
@@ -8,6 +8,8 @@ $(document).ready( function() {
     audio_tag.play();
   }
 
+// Make sounds with clicks
+//__________________________
   function clickSound(button, sound) {
     $(button).click( function (){
       playSound(sound);
@@ -21,7 +23,8 @@ $(document).ready( function() {
     clickSound("." + noteArray[i], noteArray[i] + "Audio");
   }
 
-// -- Keypress to make sounds --
+// Make sounds with keyboard
+//__________________________
 
 var keyboard_map = {
     65 : "c",
