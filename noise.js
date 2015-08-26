@@ -8,12 +8,11 @@ $(document).ready( function() {
     });
   }
 
-  soundNote(".c", "cAudio");
-  soundNote(".d", "dAudio");
-  soundNote(".e", "eAudio");
-  soundNote(".f", "fAudio");
-  soundNote(".g", "gAudio");
-  soundNote(".a", "aAudio");
-  soundNote(".b", "bAudio");
+  var noteArray = ["a", "b", "c", "d", "e", "f", "g"]
+
+  // Iterates and calls each note option
+  for (i = 0; i < noteArray.length; i++){
+    soundNote("." + noteArray[i], noteArray[i] +"Audio");
+  }
 
 });
