@@ -29,22 +29,26 @@ var keyboard_map = {
     76 : "b"
     };
 
-  function keySound (keyboard) {
+  function playSound(action, sound) {
+    var audio_tag = document.getElementById(action[sound] + "Audio");
+    audio_tag.current_time = 0;
+    audio_tag.playbackRate = 3.0;
+    audio_tag.play();
+  }
+
+  function keySound (keyboard_map) {
     $( "body" ).keydown(function( event ) {
       var keycode = event.which; // for clarity
-      if (keycode in keyboard) {
-        $("." + keyboard[keycode]).addClass("active");
-        var audio_tag = document.getElementById(keyboard[keycode] + "Audio");
-        audio_tag.current_time = 0;
-        audio_tag.playbackRate = 3.0;
-        audio_tag.play();
+      if (keycode in keyboard_map) {
+        $("." + keyboard_map[keycode]).addClass("active");
+        playSound(keyboard_map, keycode);
       }
     });
 
     $( "body" ).keyup(function( event ) {
       var keycode = event.which; // for clarity
-      if (keycode in keyboard) {
-        $("." + keyboard[keycode]).removeClass("active");
+      if (keycode in keyboard_map) {
+        $("." + keyboard_map[keycode]).removeClass("active");
       }
     });
   }
