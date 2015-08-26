@@ -33,7 +33,6 @@ var keyboard_map = {
     $( "body" ).keydown(function( event ) {
       var keycode = event.which; // for clarity
       if (keycode in keyboard) {
-        // $(".c").css("background-color", "#000");
         $("." + keyboard[keycode]).addClass("active");
         var audio_tag = document.getElementById(keyboard[keycode] + "Audio");
         audio_tag.current_time = 0;
