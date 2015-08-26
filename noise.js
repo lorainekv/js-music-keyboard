@@ -1,14 +1,16 @@
 $(document).ready( function() {
 
 // -- Clicking to make sounds --
+  function playSound(sound) {
+    var audio_tag = document.getElementById(sound);
+    audio_tag.current_time = 0;
+    audio_tag.playbackRate = 3.0;
+    audio_tag.play();
+  }
+
   function clickSound(button, sound) {
     $(button).click( function (){
-      
-
-      // var audio_tag = document.getElementById(sound);
-      // audio_tag.current_time = 0; // rewind the audio file
-      // audio_tag.playbackRate = 3.0; // cuz I'm impatient
-      // audio_tag.play(); // this plays it exactly once
+      playSound(sound);
     });
   }
 
@@ -31,19 +33,13 @@ var keyboard_map = {
     76 : "b"
     };
 
-  function playSound(action, sound) {
-    var audio_tag = document.getElementById(sound + "Audio");
-    audio_tag.current_time = 0;
-    audio_tag.playbackRate = 3.0;
-    audio_tag.play();
-  }
-
   function keySound (keyboard_map) {
     $( "body" ).keydown(function( event ) {
       var keycode = event.which; // for clarity
       if (keycode in keyboard_map) {
         $("." + keyboard_map[keycode]).addClass("active");
-        playSound(keyboard_map, keyboard_map[keycode]);
+        var sound = keyboard_map[keycode] + "Audio"
+        playSound(sound);
       }
     });
 
